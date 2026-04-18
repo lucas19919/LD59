@@ -50,6 +50,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Plant",
+                    "type": "Button",
+                    "id": "e52b4498-5c30-484b-aaf3-c9c20e039b0d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Place",
+                    "type": "Button",
+                    "id": "d75089c9-34ff-4055-a6f4-a6b263af15a3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Water",
+                    "type": "Button",
+                    "id": "b9e62c56-6f7e-4380-8ea2-b67c0e8efa2c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Fertilize",
+                    "type": "Button",
+                    "id": "fa7ed870-10d7-452f-82ed-e80115af24ca",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -105,6 +141,50 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "873e5707-8945-45da-b2d4-21f3bbc3164d",
+                    "path": "<Keyboard>/1",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Plant",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ceadc70e-b4c6-47d8-a0eb-1460b7d68e62",
+                    "path": "<Keyboard>/2",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Place",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e61c893-e55b-4fc7-a7ce-c041b1ac4c7e",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Water",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a28bd57-6cd6-43ca-bfbf-1fa38de0b2f6",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Tap,Press",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Fertilize",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

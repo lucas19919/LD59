@@ -14,6 +14,11 @@ public class Tree : MonoBehaviour
 
     private float highestGrowth = 0.0f;
 
+    private void Awake()
+    {
+        World.AddTree(this);
+    }
+
     private void Update()
     {
         if (currentGrowth < maxGrowth)

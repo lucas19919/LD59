@@ -1,14 +1,38 @@
 using UnityEngine;
 
-public class Insantiate : MonoBehaviour
+public class Instantiate : MonoBehaviour
 {
+    public InputManager input;
+    public SignalManager signalManager;
+
+    public GameObject towerPrefab;
+    public GameObject treePrefab;
+
     public void InstantiateTower()
     {
-        World.AddTower(Instantiate(Resources.Load<SignalTower>("Prefabs/SignalTower"), transform.position, Quaternion.identity));
+        GameObject tower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+        World.AddTower(tower.GetComponent<SignalTower>());
     }
 
     public void PlantTree()
     {
-        World.AddTree(Instantiate(Resources.Load<Tree>("Prefabs/Seed"), transform.position, Quaternion.identity));
+        GameObject tree = Instantiate(treePrefab, transform.position, Quaternion.identity);
+        World.AddTree(tree.GetComponent<Tree>());
+    }
+
+    private void Update()
+    {
+        if (input.Place && signalManager.currentStrength > 50.0f)
+        {
+            Debug.Log("Placing...");
+            signalManager.currentStrength -= 50.0f;
+            InstantiateTower();
+        }
+        if (input.Plant && signalManager.currentStrength > 25.0f)
+        {
+            Debug.Log("Planting...");
+            signalManager.currentStrength -= 25.0f; 
+            PlantTree();
+        }
     }
 }

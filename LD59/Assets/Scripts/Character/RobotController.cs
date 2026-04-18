@@ -44,9 +44,9 @@ public class RobotController : MonoBehaviour
         //get button inputs from dash
         if (care != null)
         {
-            //if (fertilize)
+            if (input.Water)
                 care.Water(signalManager);
-            //if (water)
+            if (input.Water)
                 care.Fertilize(signalManager);
         }
     }

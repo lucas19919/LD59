@@ -9,6 +9,10 @@ public class InputManager : MonoBehaviour
     public bool IsMiddleClicking { get; private set; }
     public bool IsLeftClicking { get; private set; }
     public bool LeftClick { get; private set; }
+    public bool Plant { get; private set; }
+    public bool Place { get; private set; }
+    public bool Fertilize { get; private set; }
+    public bool Water { get; private set; }
 
     private void Awake()
     {
@@ -22,6 +26,18 @@ public class InputManager : MonoBehaviour
 
         controls.UI.Left.performed += ctx => LeftClick = true;
         controls.UI.Left.canceled += ctx => LeftClick = false;
+
+        controls.UI.Plant.performed += ctx => Plant = true;
+        controls.UI.Plant.canceled += ctx => Plant = false;
+
+        controls.UI.Place.performed += ctx => Place = true;
+        controls.UI.Place.canceled += ctx => Place = false;
+
+        controls.UI.Fertilize.performed += ctx => Fertilize = true;
+        controls.UI.Fertilize.canceled += ctx => Fertilize = false;
+
+        controls.UI.Water.performed += ctx => Water = true;
+        controls.UI.Water.canceled += ctx => Water = false;
     }
 
     private void Update()
