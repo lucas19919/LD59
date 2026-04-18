@@ -93,7 +93,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ""id"": ""7536ed68-6230-4934-9ccf-bb075448ea90"",
             ""actions"": [
                 {
-                    ""name"": ""Orbit"",
+                    ""name"": ""MiddleHold"",
                     ""type"": ""Button"",
                     ""id"": ""bbe7fada-dade-4ac1-a074-6a7264c1b35c"",
                     ""expectedControlType"": """",
@@ -111,10 +111,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""MouseZoom"",
+                    ""name"": ""Scroll"",
                     ""type"": ""Value"",
                     ""id"": ""65ad3d1b-7f71-4f89-8b76-8d0092cf9eb9"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LeftHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""357a63f3-7062-4d6d-93e1-403e96a2ce5a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""f91cd8ac-9784-4751-80e3-dd8ad0e35065"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -128,7 +146,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": ""Hold(duration=0.1)"",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Orbit"",
+                    ""action"": ""MiddleHold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -150,7 +168,29 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""MouseZoom"",
+                    ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff768a2c-24c6-4e6e-8088-ba9a9bdeac4d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Hold(duration=0.1)"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""LeftHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b49034a7-9e5c-43f5-b4d0-ef4d5c8b59f4"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press(pressPoint=0.1)"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -222,9 +262,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
 }");
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Orbit = m_UI.FindAction("Orbit", throwIfNotFound: true);
+        m_UI_MiddleHold = m_UI.FindAction("MiddleHold", throwIfNotFound: true);
         m_UI_MouseMovement = m_UI.FindAction("MouseMovement", throwIfNotFound: true);
-        m_UI_MouseZoom = m_UI.FindAction("MouseZoom", throwIfNotFound: true);
+        m_UI_Scroll = m_UI.FindAction("Scroll", throwIfNotFound: true);
+        m_UI_LeftHold = m_UI.FindAction("LeftHold", throwIfNotFound: true);
+        m_UI_Left = m_UI.FindAction("Left", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -305,9 +347,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_Orbit;
+    private readonly InputAction m_UI_MiddleHold;
     private readonly InputAction m_UI_MouseMovement;
-    private readonly InputAction m_UI_MouseZoom;
+    private readonly InputAction m_UI_Scroll;
+    private readonly InputAction m_UI_LeftHold;
+    private readonly InputAction m_UI_Left;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -320,17 +364,25 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public UIActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "UI/Orbit".
+        /// Provides access to the underlying input action "UI/MiddleHold".
         /// </summary>
-        public InputAction @Orbit => m_Wrapper.m_UI_Orbit;
+        public InputAction @MiddleHold => m_Wrapper.m_UI_MiddleHold;
         /// <summary>
         /// Provides access to the underlying input action "UI/MouseMovement".
         /// </summary>
         public InputAction @MouseMovement => m_Wrapper.m_UI_MouseMovement;
         /// <summary>
-        /// Provides access to the underlying input action "UI/MouseZoom".
+        /// Provides access to the underlying input action "UI/Scroll".
         /// </summary>
-        public InputAction @MouseZoom => m_Wrapper.m_UI_MouseZoom;
+        public InputAction @Scroll => m_Wrapper.m_UI_Scroll;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/LeftHold".
+        /// </summary>
+        public InputAction @LeftHold => m_Wrapper.m_UI_LeftHold;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Left".
+        /// </summary>
+        public InputAction @Left => m_Wrapper.m_UI_Left;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -357,15 +409,21 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @Orbit.started += instance.OnOrbit;
-            @Orbit.performed += instance.OnOrbit;
-            @Orbit.canceled += instance.OnOrbit;
+            @MiddleHold.started += instance.OnMiddleHold;
+            @MiddleHold.performed += instance.OnMiddleHold;
+            @MiddleHold.canceled += instance.OnMiddleHold;
             @MouseMovement.started += instance.OnMouseMovement;
             @MouseMovement.performed += instance.OnMouseMovement;
             @MouseMovement.canceled += instance.OnMouseMovement;
-            @MouseZoom.started += instance.OnMouseZoom;
-            @MouseZoom.performed += instance.OnMouseZoom;
-            @MouseZoom.canceled += instance.OnMouseZoom;
+            @Scroll.started += instance.OnScroll;
+            @Scroll.performed += instance.OnScroll;
+            @Scroll.canceled += instance.OnScroll;
+            @LeftHold.started += instance.OnLeftHold;
+            @LeftHold.performed += instance.OnLeftHold;
+            @LeftHold.canceled += instance.OnLeftHold;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
         }
 
         /// <summary>
@@ -377,15 +435,21 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UIActions" />
         private void UnregisterCallbacks(IUIActions instance)
         {
-            @Orbit.started -= instance.OnOrbit;
-            @Orbit.performed -= instance.OnOrbit;
-            @Orbit.canceled -= instance.OnOrbit;
+            @MiddleHold.started -= instance.OnMiddleHold;
+            @MiddleHold.performed -= instance.OnMiddleHold;
+            @MiddleHold.canceled -= instance.OnMiddleHold;
             @MouseMovement.started -= instance.OnMouseMovement;
             @MouseMovement.performed -= instance.OnMouseMovement;
             @MouseMovement.canceled -= instance.OnMouseMovement;
-            @MouseZoom.started -= instance.OnMouseZoom;
-            @MouseZoom.performed -= instance.OnMouseZoom;
-            @MouseZoom.canceled -= instance.OnMouseZoom;
+            @Scroll.started -= instance.OnScroll;
+            @Scroll.performed -= instance.OnScroll;
+            @Scroll.canceled -= instance.OnScroll;
+            @LeftHold.started -= instance.OnLeftHold;
+            @LeftHold.performed -= instance.OnLeftHold;
+            @LeftHold.canceled -= instance.OnLeftHold;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
         }
 
         /// <summary>
@@ -492,12 +556,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Orbit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MiddleHold" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnOrbit(InputAction.CallbackContext context);
+        void OnMiddleHold(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "MouseMovement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -506,11 +570,25 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMouseMovement(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "MouseZoom" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Scroll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMouseZoom(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LeftHold" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeftHold(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Left" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeft(InputAction.CallbackContext context);
     }
 }
