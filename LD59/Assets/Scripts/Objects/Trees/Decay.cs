@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class Decay : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Material leaves;
+    public Color alive;
+    public Color dead;
+
+    private Tree tree;
+
+    private void Awake()
     {
-        
+        tree = GetComponent<Tree>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        Color color = Color.Lerp(dead, alive, tree.currentGrowth / tree.maxGrowth);
+        leaves.SetColor("_BaseColor", color);
     }
 }

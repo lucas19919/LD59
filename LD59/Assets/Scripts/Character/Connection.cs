@@ -4,8 +4,9 @@ using UnityEngine.Assemblies;
 public class Connection : MonoBehaviour
 {
     public Transform anchor;
-    private SignalTower connectedTower;
 
+    private SignalTower connectedTower;
+    public float signalStrength { get; private set; }
     private void Start()
     {
         if (World.towers.Count > 0)
@@ -16,7 +17,21 @@ public class Connection : MonoBehaviour
 
     private void Update()
     {
-        if (World.towers.Count < 2) return;
+        if (World.towers.Count < 2) 
+        {
+            if (World.towers.Count == 0)
+            {
+                signalStrength = 0;
+                connectedTower = null;
+            }
+            else
+            {
+                connectedTower.isConnected = true;
+                signalStrength = connectedTower.signalStrength / (Vector3.Distance(this.transform.position, connectedTower.transform.position) * Mathf.PI);
+            }
+
+            return;
+        }
 
         float currentStrength = 0;
         foreach (SignalTower tower in World.towers)
@@ -24,7 +39,7 @@ public class Connection : MonoBehaviour
             Vector3 dir1 = tower.transform.position - anchor.position;
             Vector3 dir2 = this.transform.position - anchor.position;
 
-            float angle = Vector3.Angle(dir1, dir2);
+            float angle = (Mathf.PI * Vector3.Angle(dir1, dir2)) / 180.0f;
             float distance = angle * anchor.localScale.x;
 
             float strength = tower.signalStrength / distance;
@@ -34,6 +49,7 @@ public class Connection : MonoBehaviour
                 connectedTower.isConnected = false;
                 connectedTower = tower;
                 connectedTower.isConnected = true;
+                signalStrength = strength;
 
                 continue;
             }
