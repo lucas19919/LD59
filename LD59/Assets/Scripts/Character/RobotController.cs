@@ -12,15 +12,20 @@ public class RobotController : MonoBehaviour
     private Vector3 dragCenter;
     private Vector3 mousePosition;
 
+    private SignalManager signalManager;
+    private Care care;
+
+    private void Awake()
+    {
+        signalManager = GetComponent<SignalManager>();
+    }
+
     private void Update()
     {
         Vector3 normal = (this.transform.position - anchor.transform.position).normalized;
 
         Vector3 right = satellite.right;
         Vector3 up = satellite.up;
-
-        Debug.DrawLine(this.transform.position, this.transform.position + satellite.right, Color.yellow);
-        Debug.DrawLine(this.transform.position, this.transform.position + satellite.up, Color.green);
 
         if (input.LeftClick && !input.IsLeftClicking)
         {
@@ -35,5 +40,29 @@ public class RobotController : MonoBehaviour
             Vector3 movement = (right * delta.x + up * delta.y) * movementSpeed * Time.deltaTime;
             this.transform.position += movement;
         }
+
+        //get button inputs from dash
+        if (care != null)
+        {
+            //if (fertilize)
+                care.Water(signalManager);
+            //if (water)
+                care.Fertilize(signalManager);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Tree"))
+        {
+            care = other.gameObject.GetComponent<Care>();
+            //draw something to show that it's selected
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        care = null;
+        //remove selection indicator
     }
 }   

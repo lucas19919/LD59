@@ -17,7 +17,21 @@ public class Connection : MonoBehaviour
 
     private void Update()
     {
-        if (World.towers.Count < 2) return;
+        if (World.towers.Count < 2) 
+        {
+            if (World.towers.Count == 0)
+            {
+                signalStrength = 0;
+                connectedTower = null;
+            }
+            else
+            {
+                connectedTower.isConnected = true;
+                signalStrength = connectedTower.signalStrength / (Vector3.Distance(this.transform.position, connectedTower.transform.position) * Mathf.PI);
+            }
+
+            return;
+        }
 
         float currentStrength = 0;
         foreach (SignalTower tower in World.towers)

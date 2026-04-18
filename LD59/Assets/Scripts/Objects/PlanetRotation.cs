@@ -21,7 +21,7 @@ public class PlanetRotation : MonoBehaviour
 
         if (distance == 0) dir = body.up;
 
-        body.position = anchor.position + (dir.normalized * anchor.localScale.x * 0.5f) + (dir.normalized * height);
+        body.position = anchor.position + (dir.normalized * anchor.localScale.x * 0.5f) + (dir.normalized * height * this.transform.localScale.z);
     }
 
 }
