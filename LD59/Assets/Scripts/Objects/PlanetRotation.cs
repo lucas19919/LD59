@@ -3,8 +3,14 @@ using UnityEngine;
 
 public class PlanetRotation : MonoBehaviour
 {
-    public Transform anchor;
     public float height = 1.0f;
+
+    private Transform anchor;
+
+    private void Awake()
+    {
+        anchor = GameObject.Find("Earth").transform;
+    }
 
     private void Update()
     {

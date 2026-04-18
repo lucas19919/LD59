@@ -9,6 +9,6 @@ public class SignalManager : MonoBehaviour
     private void Update()
     {
         currentStrength += (connection.signalStrength - signalDecay) * Time.deltaTime;
-        Mathf.Clamp(currentStrength, 0, 100);
+        currentStrength = Mathf.Clamp(currentStrength, 0, 100);
     }
 }
