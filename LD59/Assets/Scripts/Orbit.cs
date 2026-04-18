@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OrbitingSun : MonoBehaviour
+public class Orbit : MonoBehaviour
 {
     public Transform anchor;
     public float speed = 10.0f;
