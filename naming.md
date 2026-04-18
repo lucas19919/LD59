@@ -1,6 +1,6 @@
-Models: mod\_name
+Models: mod\_UpperUpper
 
-Materials: mat\_name
+Materials: mat\_UpperUpper
 
 Variables: upperLower
 
