@@ -38,11 +38,16 @@ public class RobotController : MonoBehaviour
             mousePosition = Pointer.current.position.ReadValue();
             Vector3 delta = (mousePosition - dragCenter).normalized;
 
-            Vector3 movement = (right * delta.x + up * delta.y) * movementSpeed * Time.deltaTime;
+            Vector3 movementDirection = (right * delta.x + up * delta.y).normalized;
+            Vector3 movement = movementDirection * movementSpeed * Time.deltaTime;
             this.transform.position += movement;
+
+            if (movementDirection != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(movementDirection, normal);
+            }
         }
 
-        //get button inputs from dash
         if (care != null)
         {
             if (input.Water)
@@ -64,4 +69,4 @@ public class RobotController : MonoBehaviour
         care = null;
         other.GetComponent<Tree>().projector.enabled = false;
     }
-}   
+}
