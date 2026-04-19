@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Tree : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Tree : MonoBehaviour
     public float fertilizer = 1.0f;
 
     private float highestGrowth = 0.0f;
+
+    public DecalProjector projector;
 
     private void Awake()
     {
@@ -39,7 +42,5 @@ public class Tree : MonoBehaviour
 
         water = Mathf.Clamp(water, 0.0f, 1.0f);
         fertilizer = Mathf.Clamp(fertilizer, 0.0f, 1.0f);
-
-        Debug.Log($"Growth: {currentGrowth}, Water: {water}, Fertilizer: {fertilizer}");
     }
 }

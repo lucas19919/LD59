@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6391173787624382247}
   - component: {fileID: 3012547612544767118}
   - component: {fileID: 7080139080728237363}
-  - component: {fileID: 1114870988395003588}
+  - component: {fileID: 8207186832324874442}
   m_Layer: 0
   m_Name: SignalTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4429048130628000362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 13.67, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b888d84faee6184dadee62ee8ca0d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetRotation
-  anchor: {fileID: 0}
   height: 2
 --- !u!114 &7080139080728237363
 MonoBehaviour:
@@ -67,8 +66,8 @@ MonoBehaviour:
   connected: {fileID: 2100000, guid: 270040aee167b65488096b7d1c1cd1d6, type: 2}
   disconnected: {fileID: 2100000, guid: 83a46610d72fe0f47a1aadd6e0fcd220, type: 2}
   meshRenderer: {fileID: 4718581881389902823}
---- !u!135 &1114870988395003588
-SphereCollider:
+--- !u!136 &8207186832324874442
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -77,17 +76,19 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 4
+  m_Height: 15
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 1.78}
 --- !u!1 &4514205955610863564
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +100,6 @@ GameObject:
   - component: {fileID: 8221403790418514345}
   - component: {fileID: 5852235367554105826}
   - component: {fileID: 4718581881389902823}
-  - component: {fileID: 8683625882010792984}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -179,26 +179,3 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8683625882010792984
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4514205955610863564}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
