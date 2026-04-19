@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class RobotController : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class RobotController : MonoBehaviour
         {
             if (input.Water)
                 care.Water(signalManager);
-            if (input.Water)
+            if (input.Fertilize)
                 care.Fertilize(signalManager);
         }
     }
@@ -56,13 +57,13 @@ public class RobotController : MonoBehaviour
         if (other.gameObject.CompareTag("Tree"))
         {
             care = other.gameObject.GetComponent<Care>();
-            //draw something to show that it's selected
+            other.GetComponent<Tree>().projector.enabled = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         care = null;
-        //remove selection indicator
+        other.GetComponent<Tree>().projector.enabled = false;
     }
 }   

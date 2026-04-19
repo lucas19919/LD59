@@ -4,9 +4,10 @@ using UnityEngine.Assemblies;
 public class Connection : MonoBehaviour
 {
     public Transform anchor;
+    public float signalStrength { get; private set; }
 
     private SignalTower connectedTower;
-    public float signalStrength { get; private set; }
+
     private void Start()
     {
         if (World.towers.Count > 0)

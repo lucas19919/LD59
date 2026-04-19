@@ -10,14 +10,36 @@ public class Instantiate : MonoBehaviour
 
     public void InstantiateTower()
     {
+        Collider[] hits = Physics.OverlapSphere(transform.position, 5.0f);
+
+        foreach (Collider hit in hits)
+        {
+            if (hit.CompareTag("Tower"))
+            {
+                Debug.Log("Too close to another tower!");
+                return;
+            }
+        }
+
+        signalManager.currentStrength -= 50.0f;
         GameObject tower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
-        World.AddTower(tower.GetComponent<SignalTower>());
     }
 
     public void PlantTree()
     {
+        Collider[] hits = Physics.OverlapSphere(transform.position, 2.0f);
+
+        foreach (Collider hit in hits)
+        {
+            if (hit.CompareTag("Tree"))
+            {
+                Debug.Log("Too close to another Tree!");
+                return;
+            }
+        }
+
+        signalManager.currentStrength -= 25.0f;
         GameObject tree = Instantiate(treePrefab, transform.position, Quaternion.identity);
-        World.AddTree(tree.GetComponent<Tree>());
     }
 
     private void Update()
@@ -25,13 +47,11 @@ public class Instantiate : MonoBehaviour
         if (input.Place && signalManager.currentStrength > 50.0f)
         {
             Debug.Log("Placing...");
-            signalManager.currentStrength -= 50.0f;
             InstantiateTower();
         }
         if (input.Plant && signalManager.currentStrength > 25.0f)
         {
             Debug.Log("Planting...");
-            signalManager.currentStrength -= 25.0f; 
             PlantTree();
         }
     }

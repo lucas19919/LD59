@@ -5921,7 +5921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6391173787624382247, guid: f63d4150707ad8c42b59013a67c6a0ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.59
       objectReference: {fileID: 0}
     - target: {fileID: 6391173787624382247, guid: f63d4150707ad8c42b59013a67c6a0ce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6112,7 +6112,7 @@ GameObject:
   - component: {fileID: 1055080140}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6189,6 +6189,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055080137}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1151372122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2017015976548825737, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: dead.a
+      value: 0.92156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 5190726910539785749, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_Name
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631618525724035347, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
 --- !u!1 &1282414417
 GameObject:
   m_ObjectHideFlags: 0
@@ -6259,7 +6320,7 @@ GameObject:
   - component: {fileID: 1420854744}
   m_Layer: 0
   m_Name: Robot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6335,7 +6396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Signal
   currentStrength: 100
-  signalDecay: 4
+  signalDecay: -50
   connection: {fileID: 1420854741}
 --- !u!136 &1420854743
 CapsuleCollider:
@@ -6375,7 +6436,7 @@ MonoBehaviour:
   input: {fileID: 865214284}
   signalManager: {fileID: 1420854742}
   towerPrefab: {fileID: 4429048130628000362, guid: f63d4150707ad8c42b59013a67c6a0ce, type: 3}
-  treePrefab: {fileID: 815291157397282682, guid: 6c4cfb07ac25fbd45a339b3bcf1edc0b, type: 3}
+  treePrefab: {fileID: 5190726910539785749, guid: 4f39a6b78db179d45a031251a2485eca, type: 3}
 --- !u!1 &1507798610
 GameObject:
   m_ObjectHideFlags: 0
@@ -6832,3 +6893,4 @@ SceneRoots:
   - {fileID: 90887525}
   - {fileID: 1507798615}
   - {fileID: 35575688}
+  - {fileID: 1151372122}
