@@ -1,21 +1,24 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class Tree : MonoBehaviour
 {
+    [Header("Growth Settings")]
     public float growthRate = 0.1f;
-    public float currentGrowth = 0.001f;
     public float maxGrowth = 1.0f;
-
     public float decayRate = 0.05f;
 
-    public float water = 1.0f;
-    public float fertilizer = 1.0f;
+    [Header("Resources")]
+    [Range(0, 1)] public float water = 1.0f;
 
-    private float highestGrowth = 0.0f;
-
+    [Header("Visuals")]
     public DecalProjector projector;
+    public Material leafMaterial;
+    public Color healthyColor = Color.green;
+    public Color dryColor = new Color(0.6f, 0.5f, 0.2f);
+
+    private float currentGrowth = 0.001f;
+    private float highestGrowth = 0.0f;
 
     private void Awake()
     {
@@ -24,23 +27,48 @@ public class Tree : MonoBehaviour
 
     private void Update()
     {
-        if (currentGrowth < maxGrowth)
+        HandleResources();
+        HandleGrowthAndDecay();
+        UpdateVisuals();
+    }
+
+    private void HandleResources()
+    {
+        water = Mathf.MoveTowards(water, 0f, decayRate * Time.deltaTime);
+    }
+
+    private void HandleGrowthAndDecay()
+    {
+        if (water > 0)
         {
-            if (currentGrowth > highestGrowth)
-                highestGrowth = currentGrowth;
-
-            currentGrowth += ((growthRate * fertilizer) - (decayRate * (1 - water))) * Time.deltaTime;
-            currentGrowth = Mathf.Clamp(currentGrowth, 0, maxGrowth);
-
-            transform.localScale = Vector3.one * highestGrowth;
+            if (currentGrowth < maxGrowth)
+            {
+                currentGrowth += growthRate * Time.deltaTime;
+            }
+        }
+        else
+        {
+            currentGrowth -= decayRate * Time.deltaTime;
         }
 
-        if (currentGrowth == 0) Destroy(this.gameObject);
+        currentGrowth = Mathf.Clamp(currentGrowth, 0, maxGrowth);
 
-        water -= decayRate * Time.deltaTime;
-        fertilizer -= decayRate * Time.deltaTime;
+        if (currentGrowth > highestGrowth)
+            highestGrowth = currentGrowth;
 
-        water = Mathf.Clamp(water, 0.0f, 1.0f);
-        fertilizer = Mathf.Clamp(fertilizer, 0.0f, 1.0f);
+        transform.localScale = Vector3.one * (water > 0 ? highestGrowth : currentGrowth);
+
+        if (currentGrowth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void UpdateVisuals()
+    {
+        if (leafMaterial != null)
+        {
+            leafMaterial.color = Color.Lerp(dryColor, healthyColor, water);
+        }
     }
 }

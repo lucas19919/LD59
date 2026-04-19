@@ -27036,7 +27036,6 @@ GameObject:
   - component: {fileID: 8631618525724035347}
   - component: {fileID: 2281853384632393790}
   - component: {fileID: 9088502495267928283}
-  - component: {fileID: 2017015976548825737}
   - component: {fileID: 7846448038440843084}
   - component: {fileID: 6615898693243331470}
   - component: {fileID: 6152907772032201011}
@@ -27091,27 +27090,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tree
   growthRate: 0.1
-  currentGrowth: 0.001
   maxGrowth: 1
   decayRate: 0.05
   water: 1
   fertilizer: 1
   projector: {fileID: 4831260362420140667}
---- !u!114 &2017015976548825737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5190726910539785749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1225c384f2ff2614aa2474f0fb4b2903, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Decay
-  leaves: {fileID: 2100000, guid: cfde412b492cda942b244457535a21d6, type: 2}
-  alive: {r: 0.2453691, g: 0.9811321, b: 0.087931626, a: 1}
-  dead: {r: 0.18867922, g: 0.064969726, b: 0.064969726, a: 0.57254905}
+  leafMaterial: {fileID: 2100000, guid: cfde412b492cda942b244457535a21d6, type: 2}
+  healthyColor: {r: 0, g: 1, b: 0, a: 1}
+  dryColor: {r: 0.6, g: 0.5, b: 0.2, a: 1}
 --- !u!114 &7846448038440843084
 MonoBehaviour:
   m_ObjectHideFlags: 0

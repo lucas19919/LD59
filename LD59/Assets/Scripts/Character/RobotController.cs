@@ -47,8 +47,6 @@ public class RobotController : MonoBehaviour
         {
             if (input.Water)
                 care.Water(signalManager);
-            if (input.Fertilize)
-                care.Fertilize(signalManager);
         }
     }
 
