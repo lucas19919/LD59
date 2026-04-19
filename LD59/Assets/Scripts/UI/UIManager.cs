@@ -7,12 +7,22 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI treeCount;
     public TextMeshProUGUI signal;
 
+    public TextMeshProUGUI winText;
+
     public SignalManager signalManager;
 
 
     void Update()
     {
-        signal.text = $"Signal Strength: {signalManager.currentStrength:F1}";
-        treeCount.text = $"Trees Planted: {World.trees.Count}";
+        signal.text = $"{signalManager.currentStrength:F1} dBm";
+        treeCount.text = $"Terraformed: \n{(((float)World.trees.Count / 30) * 100):F1}%";
+
+        if (World.trees.Count >= 30)
+        {
+            Time.timeScale = 0;
+            winText.enabled = true;
+            signal.enabled = false;
+            treeCount.enabled = false;
+        }
     }
 }

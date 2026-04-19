@@ -21,6 +21,7 @@ public class Instantiate : MonoBehaviour
             }
         }
 
+        SoundManager.Tower();
         signalManager.currentStrength -= 50.0f;
         GameObject tower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
     }
@@ -38,6 +39,7 @@ public class Instantiate : MonoBehaviour
             }
         }
 
+        SoundManager.Tree();
         signalManager.currentStrength -= 25.0f;
         GameObject tree = Instantiate(treePrefab, transform.position, Quaternion.identity);
     }

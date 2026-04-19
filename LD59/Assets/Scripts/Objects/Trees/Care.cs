@@ -15,6 +15,7 @@ public class Care : MonoBehaviour
         {
             signal.currentStrength -= 10.0f;
             tree.water = 1.0f;
+            SoundManager.Water();
         }
     }
 }

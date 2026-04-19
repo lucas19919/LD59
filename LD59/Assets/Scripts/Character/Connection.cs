@@ -52,6 +52,8 @@ public class Connection : MonoBehaviour
                 connectedTower.isConnected = true;
                 signalStrength = strength;
 
+                //SoundManager.Signal();
+
                 continue;
             }
         }

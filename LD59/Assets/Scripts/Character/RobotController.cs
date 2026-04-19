@@ -16,9 +16,13 @@ public class RobotController : MonoBehaviour
     private SignalManager signalManager;
     private Care care;
 
+    float timer = 0f;
+    float nextSoundTime = 15.0f;
+
     private void Awake()
     {
         signalManager = GetComponent<SignalManager>();
+        SoundManager.PlayBackgroundNoise("Background");
     }
 
     private void Update()
@@ -51,7 +55,19 @@ public class RobotController : MonoBehaviour
         if (care != null)
         {
             if (input.Water)
+            {
                 care.Water(signalManager);
+            }
+        }
+
+        timer += Time.deltaTime;
+
+        if (timer >= nextSoundTime)
+        {
+            SoundManager.Random(); 
+
+            timer = 0f;
+            nextSoundTime = UnityEngine.Random.Range(10f, 30f);
         }
     }
 
