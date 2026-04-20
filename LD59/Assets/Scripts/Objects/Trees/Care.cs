@@ -11,9 +11,9 @@ public class Care : MonoBehaviour
 
     public void Water(SignalManager signal)
     {
-        if (signal.currentStrength > 10.0f)
+        if (signal.currentStrength > 7.5f)
         {
-            signal.currentStrength -= 10.0f;
+            signal.currentStrength -= 7.5f;
             tree.water = 1.0f;
             SoundManager.Water();
         }

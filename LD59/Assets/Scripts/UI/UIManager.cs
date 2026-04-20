@@ -15,9 +15,9 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         signal.text = $"{signalManager.currentStrength:F1} dBm";
-        treeCount.text = $"Terraformed: \n{(((float)World.trees.Count / 30) * 100):F1}%";
+        treeCount.text = $"Terraformed: \n{(((float)World.trees.Count / 25) * 100):F1}%";
 
-        if (World.trees.Count >= 30)
+        if (World.trees.Count >= 25)
         {
             Time.timeScale = 0;
             winText.enabled = true;

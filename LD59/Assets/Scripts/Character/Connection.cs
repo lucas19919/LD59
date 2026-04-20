@@ -6,7 +6,9 @@ public class Connection : MonoBehaviour
     public Transform anchor;
     public float signalStrength { get; private set; }
 
-    private SignalTower connectedTower;
+    public SignalTower connectedTower;
+
+    private LineRenderer lr;
 
     private void Start()
     {
@@ -14,23 +16,16 @@ public class Connection : MonoBehaviour
         {
             connectedTower = World.towers[0];
         }
+
+        lr = GetComponent<LineRenderer>();
     }
 
     private void Update()
     {
-        if (World.towers.Count < 2) 
+        if (World.towers.Count == 0)
         {
-            if (World.towers.Count == 0)
-            {
-                signalStrength = 0;
-                connectedTower = null;
-            }
-            else
-            {
-                connectedTower.isConnected = true;
-                signalStrength = connectedTower.signalStrength / (Vector3.Distance(this.transform.position, connectedTower.transform.position) * Mathf.PI);
-            }
-
+            signalStrength = 0;
+            connectedTower = null;
             return;
         }
 
@@ -57,5 +52,7 @@ public class Connection : MonoBehaviour
                 continue;
             }
         }
+
+        lr.material.SetFloat("_Strength", signalStrength);
     }
 }

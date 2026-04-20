@@ -5,8 +5,9 @@ public class SignalTower : MonoBehaviour
     public float signalStrength = 1.0f;
     public float range = 10.0f;
     public bool isConnected = false;
+    
+    public Transform arc;
 
-    //tmp
     public Material connected;
     public Material disconnected;
     public MeshRenderer meshRenderer;

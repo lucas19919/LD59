@@ -77,15 +77,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Fertilize",
-                    "type": "Button",
-                    "id": "fa7ed870-10d7-452f-82ed-e80115af24ca",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -174,17 +165,6 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Water",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9a28bd57-6cd6-43ca-bfbf-1fa38de0b2f6",
-                    "path": "<Keyboard>/e",
-                    "interactions": "Tap,Press",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Fertilize",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

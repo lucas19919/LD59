@@ -163,15 +163,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Fertilize"",
-                    ""type"": ""Button"",
-                    ""id"": ""fa7ed870-10d7-452f-82ed-e80115af24ca"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -262,17 +253,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Water"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9a28bd57-6cd6-43ca-bfbf-1fa38de0b2f6"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": ""Tap,Press"",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Fertilize"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -350,7 +330,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_Plant = m_UI.FindAction("Plant", throwIfNotFound: true);
         m_UI_Place = m_UI.FindAction("Place", throwIfNotFound: true);
         m_UI_Water = m_UI.FindAction("Water", throwIfNotFound: true);
-        m_UI_Fertilize = m_UI.FindAction("Fertilize", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -439,7 +418,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Plant;
     private readonly InputAction m_UI_Place;
     private readonly InputAction m_UI_Water;
-    private readonly InputAction m_UI_Fertilize;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -483,10 +461,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Water".
         /// </summary>
         public InputAction @Water => m_Wrapper.m_UI_Water;
-        /// <summary>
-        /// Provides access to the underlying input action "UI/Fertilize".
-        /// </summary>
-        public InputAction @Fertilize => m_Wrapper.m_UI_Fertilize;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -537,9 +511,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Water.started += instance.OnWater;
             @Water.performed += instance.OnWater;
             @Water.canceled += instance.OnWater;
-            @Fertilize.started += instance.OnFertilize;
-            @Fertilize.performed += instance.OnFertilize;
-            @Fertilize.canceled += instance.OnFertilize;
         }
 
         /// <summary>
@@ -575,9 +546,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Water.started -= instance.OnWater;
             @Water.performed -= instance.OnWater;
             @Water.canceled -= instance.OnWater;
-            @Fertilize.started -= instance.OnFertilize;
-            @Fertilize.performed -= instance.OnFertilize;
-            @Fertilize.canceled -= instance.OnFertilize;
         }
 
         /// <summary>
@@ -739,12 +707,5 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnWater(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Fertilize" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnFertilize(InputAction.CallbackContext context);
     }
 }
