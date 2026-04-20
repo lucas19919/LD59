@@ -35,8 +35,9 @@ To function, you must maintain a **Signal** with your crew. Signal is supplied b
 
 | Action | Input |
 | :--- | :--- |
-| **Pan Camera** | Middle Mouse Button + Drag |
-| **Move** | Left Click + Drag |
-| **Place Tower** | `1` |
-| **Plant Tree** | `2` |
-| **Water** | `Q` |
+| Pan Camera | Middle Mouse Button and Drag |
+| Zoom | Scrollwheel |
+| Move | Left Click and Drag |
+| Plant Tree | '1' |
+| Place Tower | '2' |
+| Water | 'Q' |
